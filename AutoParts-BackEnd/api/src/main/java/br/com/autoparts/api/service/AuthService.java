@@ -18,7 +18,11 @@ public class AuthService implements UserDetailsService {
 
     
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'loadUserByUsername'");
+            if (clienteRep.findByEmail(username)!=null){
+        return (UserDetails) clienteRep.findByEmail(username);
+        }
+    else
+        return (UserDetails) clienteRep.findByEmail(username);
+    
     }
 }
