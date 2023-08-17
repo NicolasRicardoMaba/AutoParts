@@ -13,6 +13,9 @@ import { LoginModule } from './login/login.module';
 import { FuncionariosModule } from './funcionarios/funcionarios.module';
 import { FuncionariosService } from './services/funcionario/funcionarios.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FornecedorService } from './services/fornecedor/fornecedor.service';
+import { PecaService } from './services/pecas/peca.service';
+import { PecasModule } from './pecas/pecas.module';
 
 
 @NgModule({
@@ -29,12 +32,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
     ClientesModule,
     FuncionariosModule,
+    PecasModule,
     BrowserAnimationsModule
 
   ],
   providers: [
     ClientesService,
-    FuncionariosService
+    FuncionariosService,
+    FornecedorService,
+    PecaService
   ],
   bootstrap: [AppComponent]
 })
