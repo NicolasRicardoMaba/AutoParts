@@ -2,7 +2,7 @@ package br.com.autoparts.enums;
 
 public enum CargoEnum {
 
- FUNCIONARIO("funcionario"),
+FUNCIONARIO("funcionario"),
 
 ADMIN("admin"),
 

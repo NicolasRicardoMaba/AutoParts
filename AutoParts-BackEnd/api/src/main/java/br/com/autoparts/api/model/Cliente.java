@@ -1,4 +1,4 @@
-package br.com.autoparts.api.model;
+    package br.com.autoparts.api.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
