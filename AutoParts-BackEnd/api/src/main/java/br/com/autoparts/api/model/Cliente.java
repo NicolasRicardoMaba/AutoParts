@@ -1,5 +1,6 @@
     package br.com.autoparts.api.model;
 
+import br.com.autoparts.enums.CargoEnum;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,6 +18,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Cliente extends Pessoa{
+    public Cliente(String nome, Long cpf, String email, CargoEnum cargo, Endereco endereco2) {
+   
+   
+   
+    }
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "cliente_id")

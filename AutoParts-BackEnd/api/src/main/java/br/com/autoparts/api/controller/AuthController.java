@@ -40,7 +40,7 @@ public class AuthController {
         if (data.cargo() == CargoEnum.CLIENTE)
         {
     String encryptedPassword = new BCryptPasswordEncoder().encode(data.senha());
-    Cliente novoCliente = new Cliente(data.nome(),data.cpf(), data.email(), data.cargo());   
+    Cliente novoCliente = new Cliente(data.nome(),data.cpf(), data.email(), data.cargo(), data.endereco());   
 
     }
         
