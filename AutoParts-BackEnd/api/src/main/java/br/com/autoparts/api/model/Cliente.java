@@ -19,8 +19,7 @@ import lombok.Setter;
 @Setter
 public class Cliente extends Pessoa{
     public Cliente(String nome, Long cpf, String email, CargoEnum cargo, Endereco endereco2) {
-   
-   
+        
    
     }
 
