@@ -18,4 +18,3 @@ JpaRepository<Funcionario, Integer> {
     List<Funcionario> findByCargoFuncionario(Boolean cargoFuncionario);
 
 }
-a

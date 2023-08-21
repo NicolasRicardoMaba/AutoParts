@@ -2,12 +2,13 @@ package br.com.autoparts.api.controller;
 
 import br.com.autoparts.api.model.AuthenticationDTO;
 import br.com.autoparts.api.model.Cliente;
+import br.com.autoparts.api.model.Funcionario;
 import br.com.autoparts.api.model.RegisterDTO;
 import br.com.autoparts.api.repository.ClienteRepositorio;
 import br.com.autoparts.api.repository.FuncionarioRepositorio;
 import br.com.autoparts.enums.CargoEnum;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,8 +24,9 @@ public class AuthController {
 
   @Autowired
   private AuthenticationManager authManager;
-
-  private ClienteRepositorio ClientRepository;
+  @Autowired
+  private ClienteRepositorio ClientRepository;  
+  @Autowired
   private FuncionarioRepositorio funcionaryRepository;
 
   @PostMapping("/login")
@@ -42,10 +44,9 @@ public class AuthController {
   public ResponseEntity cadastrar(@RequestBody RegisterDTO data) {
   
     if (data.cargo() == CargoEnum.CLIENTE){ 
-        if (ClientRepository.findByEmail!= null)
-        return new ResponseEntity.badRequest().build();           
-    }
-        else       
+        if (ClientRepository.findByEmail(data.email())!= null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+      } else {      
     String encryptedPassword = new BCryptPasswordEncoder()
         .encode(data.senha());
     Cliente novoCliente = new Cliente(
@@ -53,12 +54,35 @@ public class AuthController {
         data.cpf(),
         data.email(),
         data.cargo(),
-        data.endereco()
-      
+        data.endereco()    
         );
+      return new ResponseEntity<>(HttpStatus.CREATED);
+      }  
 
-    }
+    }  
+    else if  
+  ((data.cargo() == CargoEnum.FUNCIONARIO) || (data.cargo() == CargoEnum.ADMIN)){
 
-    return null;
-  }
+  if (funcionaryRepository.findByEmail(data.email())!= null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+      } else {      
+   String encryptedPassword = new BCryptPasswordEncoder()
+        .encode(data.senha());
+    Funcionario  funcionario= new Funcionario(
+        data.nome(),
+        data.cpf(),
+        data.email(),
+        data.cargo()
+        
+        );
+      return new ResponseEntity<>(HttpStatus.CREATED);
+
+      }  
+      
+      }
+  else  return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+  
 }
+}
+

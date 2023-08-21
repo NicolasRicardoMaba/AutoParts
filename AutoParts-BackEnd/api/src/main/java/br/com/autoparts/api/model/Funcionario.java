@@ -1,5 +1,6 @@
 package br.com.autoparts.api.model;
 
+import br.com.autoparts.enums.CargoEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +14,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Funcionario extends Pessoa{
+    public Funcionario(String nome, Long cpf, String email, CargoEnum cargo) {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer funcionario_id;
