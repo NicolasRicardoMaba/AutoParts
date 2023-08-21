@@ -7,15 +7,17 @@ import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClienteFormPerfilComponent } from './templates/cliente-form-perfil/cliente-form-perfil.component';
 import { ClientesListaComponent } from './templates/clientes-lista/clientes-lista.component';
 import { ClientePageComponent } from './page/cliente-page/cliente-page.component';
-
-
+import { ClienteSobreComponent } from './templates/cliente-sobre/cliente-sobre.component';
+import { ClienteHomeComponent } from './templates/cliente-home/cliente-home.component';
 
 @NgModule({
   declarations: [
     ClienteFormCadastroComponent,
     ClienteFormPerfilComponent,
     ClientesListaComponent,
-    ClientePageComponent
+    ClientePageComponent,
+    ClienteSobreComponent,
+    ClienteHomeComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,9 @@ import { ClientePageComponent } from './page/cliente-page/cliente-page.component
   exports: [
     ClienteFormCadastroComponent,
     ClienteFormPerfilComponent,
-    ClientesListaComponent
+    ClientesListaComponent,
+    ClienteSobreComponent,
+    ClienteHomeComponent
   ]
 })
 export class ClientesModule { }

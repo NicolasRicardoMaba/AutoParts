@@ -1,0 +1,14 @@
+@import '../../../assets/scss/variaveis.scss';
+
+footer {
+    background: $linear;
+    margin-top: 3%;
+}
+
+section, .text-center {
+    color: $branco;
+}
+
+.col-md-3 p {
+    text-align: justify;
+}
